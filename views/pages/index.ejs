@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>고객정보관리</h1>
+    <form action="/create" method="post" class="search">
+      <input type="text" name="post" placeholder="고객명으로 검색">
+      <button type="submit">검색</button>
+    </form>
+    <span>Total Posts : <%= posts.length %> </span>
+
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>sex</th>
+        <th>contact</th>
+        <th>&nbsp;</th>
+      </tr>
+      <tr>
+        <% for(let i = posts.length - 1; i >= 0; i--) { %>
+        <td><%= posts[i].id %> </td>
+        <td><%= posts[i].post %></td>
+        <td><%= age %></td>
+        <td><%= sex %></td>
+        <td><%= contact %></td>
+        <td>
+          <form action="/delete/<%= posts[i].id %>" method="post"
+            onsubmit="let result = confirm('삭제하시겠습니까?');if(!result) return false;">
+            <button type="submit">삭제</button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+    <h2>정보입력</h2>
+    <div class="text-input">
+      <form action="/create" method="post">
+        <input type="text" name="post" placeholder="이름 입력">
+        <input type="text" name="post" placeholder="나이 입력">
+        <div class="sex">
+          <input type="radio" name="post">남자
+          <input type="radio" name="post">여자
+        </div>
+        <input type="text" name="post" placeholder="연락처">
+        <button type="submit">추가</button>
+      </form>
+    </div>
+    <!--text-input-->
+
+
+  </div>
+  <!--container-->
+</body>
+
+</html>
